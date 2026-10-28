@@ -53,8 +53,8 @@ api_key_input = st.sidebar.text_input(
 
 model_choice = st.sidebar.selectbox(
     "Select Inference Model",
-    ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"],
-    help="Choose between maximum speed (8b) or maximum reasoning depth (70b).",
+    ["openai/gpt-oss-120b", "openai/gpt-oss-20b"],
+    help="Choose between maximum reasoning depth (120b) or maximum speed (20b).",
 )
 
 st.sidebar.markdown("---")
@@ -114,7 +114,7 @@ with tab1:
     with col1:
         target_domain = st.text_input(
             "Target Domain / Organization",
-            placeholder="e.g., target-company.com",
+            placeholder="e.g., testphp.vulnweb.com",
         )
     with col2:
         recon_objective = st.selectbox(
@@ -167,7 +167,7 @@ with tab2:
 
     scope_description = st.text_area(
         "Define Target Scope & Environment Details",
-        placeholder="e.g., Web application hosted on AWS with a mobile API backend and public client dashboard.",
+        placeholder="e.g., A mock staging web application hosted on AWS EC2 running an Apache web server.",
     )
 
     focus_area = st.multiselect(
@@ -215,7 +215,7 @@ with tab3:
     source_code = st.text_area(
         "Paste Source Code Here",
         height=200,
-        placeholder="def insecure_query(user_input):\n    query = f'SELECT * FROM users WHERE name = {user_input}'\n    return db.execute(query)",
+        placeholder="import sqlite3\ndef login_user(username, password):\n    query = f\"SELECT * FROM users WHERE username = '{username}'\"\n    return db.execute(query)",
     )
 
     language = st.selectbox("Language", ["Python", "C++", "JavaScript", "SQL", "Other"])
